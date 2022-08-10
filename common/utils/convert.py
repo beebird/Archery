@@ -17,3 +17,9 @@ class Convert(Func):
         self.function = "CONVERT"
         self.template = "%(function)s(%(expression)s USING  %(transcoding_name)s)"
         return super(Convert, self).as_sql(compiler, connection)
+
+    def as_postgresql(self, compiler, connection):
+        self.template = "%(expression)s"
+        return super(Convert, self).as_sql(compiler, connection)
+
+  
